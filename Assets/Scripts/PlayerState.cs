@@ -4,7 +4,6 @@ namespace DefaultNamespace
     {
         GoingLeft,
         GoingRight,
-        Shooting,
         Idle
     }
 }
