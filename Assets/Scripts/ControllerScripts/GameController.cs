@@ -7,17 +7,17 @@ using Zenject;
 
 public class GameController : GameElement
 {
-    protected Dictionary<ControllerType, IController> Controllers;
+    protected Dictionary<ControllerType, IController> Controllers = new();
 
     [Inject]
-    public void Setup(GeneralController gameController, PlayerController playerController,
+    public void Setup(GeneralController generalController, PlayerController playerController,
         BallController ballController,
         BulletController bulletController)
     {
-        Controllers.Add(ControllerType.GeneralController, gameController);
-        Controllers.Add(ControllerType.PlayerController, gameController);
-        Controllers.Add(ControllerType.BallController, gameController);
-        Controllers.Add(ControllerType.BulletController, gameController);
+        Controllers.Add(ControllerType.GeneralController, generalController);
+        Controllers.Add(ControllerType.PlayerController, playerController);
+        Controllers.Add(ControllerType.BallController, ballController);
+        Controllers.Add(ControllerType.BulletController, bulletController);
     }
 
     public GeneralController GeneralController => Controllers[ControllerType.GeneralController] as GeneralController;
