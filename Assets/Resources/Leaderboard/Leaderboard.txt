@@ -1,0 +1,13 @@
+{
+    results :
+    [
+        {
+            name: 'matan',
+            score: 96
+        },
+        {
+            name: 'ronen',
+            score: 55
+        }
+    ]
+}
