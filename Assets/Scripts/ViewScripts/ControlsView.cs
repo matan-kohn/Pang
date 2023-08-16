@@ -37,6 +37,6 @@ public class ControlsView : GameElement
      */
     public void Restart()
     {
-        Game.GameController.ProcessCommand(CommandType.Restart);
+        Game.GameController.GeneralController.ProcessCommand(CommandType.Restart);
     }
 }

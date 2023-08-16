@@ -3,7 +3,7 @@ using DefaultNamespace;
 using UnityEngine;
 using Zenject;
 
-public class BallController : GameElement
+public class BallController : GameElement, IController
 {
     private BallView _ballView;
 
@@ -125,7 +125,8 @@ public class BallController : GameElement
             RemoveBall(ballView);
         }
     }
-    
+
+
     public void ProcessCommand(CommandType commandType, params object[] data)
     {
         switch (commandType)

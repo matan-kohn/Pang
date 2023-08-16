@@ -2,7 +2,7 @@ using DefaultNamespace;
 using UnityEngine;
 using Zenject;
 
-public class BulletController : GameElement
+public class BulletController : GameElement, IController
 {
     private BulletView _bulletView;
 

@@ -41,6 +41,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\IController.cs" />
      <Compile Include="Assets\Scripts\ViewScripts\ControlsView.cs" />
      <Compile Include="Assets\Scripts\GameElement.cs" />
      <Compile Include="Assets\Scripts\ControllerScripts\BulletController.cs" />
@@ -51,6 +52,7 @@
      <Compile Include="Assets\Scripts\ControllerScripts\BallController.cs" />
      <Compile Include="Assets\Scripts\ControllerScripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\ViewScripts\GameView.cs" />
+     <Compile Include="Assets\Scripts\ControllerType.cs" />
      <Compile Include="Assets\Scripts\CommandType.cs" />
      <Compile Include="Assets\Scripts\Game.cs" />
      <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
@@ -66,6 +68,7 @@
      <Compile Include="Assets\Scripts\PangTags.cs" />
      <Compile Include="Assets\Scripts\ViewScripts\MenuView.cs" />
      <Compile Include="Assets\Scripts\Installer.cs" />
+     <Compile Include="Assets\Scripts\ControllerScripts\GeneralController.cs" />
      <Folder Include="Assets" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

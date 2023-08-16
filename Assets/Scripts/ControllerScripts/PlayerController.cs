@@ -3,7 +3,7 @@
     using DefaultNamespace;
     using UnityEngine;
 
-    public class PlayerController : GameElement
+    public class PlayerController : GameElement, IController
     {
 
         private PlayerView _playerView;

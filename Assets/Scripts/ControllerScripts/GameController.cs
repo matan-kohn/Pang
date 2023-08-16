@@ -1,66 +1,27 @@
 using System.Collections;
+using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Zenject;
 
 public class GameController : GameElement
 {
-    public PlayerController PlayerController;
-    public BallController BallController;
-    public BulletController BulletController;
+    protected Dictionary<ControllerType, IController> Controllers;
 
-    void Start()
+    [Inject]
+    public void Setup(GeneralController gameController, PlayerController playerController,
+        BallController ballController,
+        BulletController bulletController)
     {
-        StartCoroutine(GameLoop());
+        Controllers.Add(ControllerType.GeneralController, gameController);
+        Controllers.Add(ControllerType.PlayerController, gameController);
+        Controllers.Add(ControllerType.BallController, gameController);
+        Controllers.Add(ControllerType.BulletController, gameController);
     }
 
-
-    /**
-     * <summary>
-     * the main game loop
-     * responsible for increasing the levels
-     * updates the game's data when levels increase 
-     * </summary>
-     */
-    private IEnumerator GameLoop()
-    {
-        var currentLevel = Game.GameModel.UIModel.Level;
-        var numberOfLevels = Game.GameModel.UIModel.NumberOfLevels;
-        BallController.CreateBalls(currentLevel);
-        while (currentLevel < numberOfLevels && Game.GameModel.PlayerModel.Lives > 0)
-        {
-            if (Game.GameView.BallViews.Count == 0)
-            {
-                BallController.RemoveAllBalls();
-                BulletController.RemoveAllBullets();
-                currentLevel = Game.GameModel.UIModel.LevelUp();
-                BallController.CreateBalls(currentLevel);
-                Game.GameView.StatsView.UpdateLevel();
-            }
-
-            yield return null;
-        }
-
-        SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
-    }
-    
-
-    /**
-     * <summary>
-     * takes a command's name and an optional additional data
-     * and preforms the command
-     * </summary>
-     * <param name="commandType">an enum value containing a command name</param>
-     * <param name="data">optional data for performing the command</param>
-     */
-    public void ProcessCommand(CommandType commandType, params object[] data)
-    {
-        switch (commandType)
-        {
-            case CommandType.Restart:
-                Destroy(GameObject.FindWithTag(PangTags.ProjectContext));
-                SceneManager.LoadScene("Menu");
-                break;
-        }
-    }
+    public GeneralController GeneralController => Controllers[ControllerType.GeneralController] as GeneralController;
+    public PlayerController PlayerController => Controllers[ControllerType.PlayerController] as PlayerController;
+    public BallController BallController => Controllers[ControllerType.BallController] as BallController;
+    public BulletController BulletController => Controllers[ControllerType.BulletController] as BulletController;
 }
