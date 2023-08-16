@@ -3,7 +3,15 @@ using Zenject;
 
 public class Game : MonoBehaviour
 {
-    public GameView GameView;
-    public GameController GameController;
-    public GameModel GameModel;
+    [Inject]
+    public void Setup(GameModel gameModel, GameView gameView, GameController gameController)
+    {
+        GameModel = gameModel;
+        GameView = gameView;
+        GameController = gameController;
+    }
+
+    public GameView GameView { get; private set; }
+    public GameController GameController { get; private set; }
+    public GameModel GameModel { get; private set; }
 }
